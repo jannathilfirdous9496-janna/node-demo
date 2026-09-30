@@ -3,15 +3,9 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
-                dir('frontend') {
+                dir('nutriflow/frontend') {
                     bat 'npm install'
                 }
             }
@@ -19,7 +13,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                dir('frontend') {
+                dir('nutriflow/frontend') {
                     bat 'npm test'
                 }
             }
