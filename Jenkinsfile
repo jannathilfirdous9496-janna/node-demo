@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     stages {
+
         stage('Checkout') {
             steps {
                 checkout scm
@@ -10,13 +11,17 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat 'npm install'
+                dir('frontend') {
+                    bat 'npm install'
+                }
             }
         }
 
         stage('Test') {
             steps {
-                bat 'npm test'
+                dir('frontend') {
+                    bat 'npm test'
+                }
             }
         }
     }
